@@ -1,0 +1,92 @@
+<html>
+
+	<head>
+
+		<title>vue-cli命令生成</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	</head>
+	
+	<body>
+
+		<center>
+			<h1>Vue-cli打包命令生成</h1>
+
+			<div style="position: relative;">
+
+				<input id="fileDialog" type="file" style="width: 70px;" nwdirectory/>
+			</div>
+			<span id="con"></span><br />
+			<span id="con0"></span><br />
+			<span id="con1"></span><br />
+			<span id="con2"></span>
+			<p>
+				<button class="created">创建dev</button>
+				<button class="run">创建build</button>
+				
+			</p>
+		</center>
+		<script>
+			var input = document.getElementById('input');
+			var con = document.getElementById('con');
+			var con0 = document.getElementById('con0');
+			var con1 = document.getElementById('con1');
+			var con2 = document.getElementById('con2');
+			var run = document.getElementsByClassName('run')[0];
+			var created = document.getElementsByClassName('created')[0];
+			var fs = require('fs'); 
+			main();
+
+			function main() {
+				var chooser = document.querySelector('#fileDialog');
+				chooser.addEventListener("change", function(evt) {
+					/*获取盘符*/
+					var pathA = this.value.slice(0, 1);
+					/*获取路径*/
+					var pathB = this.value.slice(2, this.value.lastIndexOf("///"));
+					/*格式化路径*/
+					var pathC = this.value.replace(/\\/g,"/\/");
+					con.innerText = '当前目录:' + this.value;
+
+					//apendText(this.value);
+					
+					//console.log(e)
+					created.onclick = function(){
+						createdfile(pathA,pathB,pathC,'dev',con1);
+					}
+					run.onclick = function(){
+						createdfile(pathA,pathB,pathC,'build',con2);
+					}
+					
+				}, false);
+			}
+			
+			//创建批处理
+			function createdfile(file, fileurl,path,filename,tag) {
+				//创建目录
+				let newPath = path + '\\Inint';
+				
+				fs.mkdir(newPath,function(info){  
+					
+				    con0.innerText = '目录创建成功'
+				    
+				});
+				
+				//let data = file + ':'+'\r \n'+ 'cd ' + fileurl +'\r \n'+'npm run ' + filename;
+				let data = 'cd ..'+'\r \n'+'npm run ' + filename;
+				
+				fs.writeFile(newPath + '\\' + filename + '.bat', data, function(err) {  
+				    if (err) {  
+				        throw err;  
+				    }  
+				  tag.innerText = filename + '生成成功';
+				   
+				});  
+			}
+			
+		</script>
+
+	</body>
+
+</html>

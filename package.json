@@ -1,0 +1,36 @@
+{
+
+	"name": "open",
+
+	"main": "app.html",
+
+	"nodejs": true,
+
+	"window": {
+
+		"title": "openfile",
+
+		"toolbar": true,
+
+		"width":500,
+
+		"height": 320,
+
+		"resizable": false,
+
+		"show_in_taskbar": true,
+
+		"frame": true,
+
+		"kiosk": false,
+
+		"icon": "",
+		
+		"show":true
+	},
+
+	"webkit": {
+
+		"plugin": true
+	}
+}
