@@ -7,6 +7,7 @@ vue-cli打包(build)和运行(dev)批处理一键生成
 > 第一次打包：cmd安装目录下执行copy /b nw.exe+app.nw app.exe
 
 > 第二次打包：下载Enigma Virtual Box选择生成的exe和辅助文件集合再次打包
-> 下载 https://share.weiyun.com/5uF6sjp
+
+> 可执行下载地址 https://share.weiyun.com/5uF6sjp
 
 
